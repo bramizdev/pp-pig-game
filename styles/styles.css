@@ -130,10 +130,16 @@ body {
   display: grid;
   align-items: center;
 }
+@media (min-width: 48rem) {
+  body {
+    place-content: center;
+  }
+}
 
 main {
   display: flex;
   flex-direction: column;
+  position: relative;
   height: 80%;
 
   background: rgba(255, 255, 255, 0.2);
@@ -147,6 +153,15 @@ main {
   position: relative;
 }
 
+@media (min-width: 48rem) {
+  main {
+    flex-direction: row;
+    height: 28rem;
+    width: 45rem;
+    max-width: 45rem;
+  }
+}
+
 /* ----- Player ----- */
 .player {
   height: 50%;
@@ -155,6 +170,14 @@ main {
   align-items: center;
   justify-content: space-between;
   padding: 3rem 1rem;
+}
+
+@media (min-width: 48rem) {
+  .player {
+    width: 50%;
+    height: 100%;
+    padding: 4rem 1rem;
+  }
 }
 
 .player__title {
@@ -175,14 +198,43 @@ main {
   padding: 0 1rem;
 }
 
+@media (min-width: 48rem) {
+  .btns__container {
+    width: auto;
+    height: 100%;
+    flex-direction: column;
+    padding: 2rem 0;
+  }
+}
+
 .btns__game-container {
   gap: 0.5rem;
   flex-direction: column;
 }
 
+@media (min-width: 48rem) {
+  .btns__game-container {
+    gap: 0.5rem;
+    flex-direction: row;
+  }
+}
+
 .btns__info-container {
   display: none;
   gap: 0.5rem;
+  flex-direction: row;
+}
+
+@media (min-width: 48rem) {
+  .btns__info-container {
+    display: flex;
+  }
+}
+
+.btn-info {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: row;
 }
 
 /* ----- Score ----- */
@@ -225,4 +277,10 @@ main {
 /* ----- Dice ----- */
 .dice {
   height: 65px;
+}
+
+@media (min-width: 48rem) {
+  .dice {
+    height: 80px;
+  }
 }

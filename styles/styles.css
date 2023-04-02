@@ -307,9 +307,47 @@ main {
 }
 
 /* ----- Modal ----- */
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 42rem;
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.modal__content > * {
+  margin-top: 1rem;
+}
+
+.modal__wrapper {
+  padding: 2.5rem 3rem 2rem 3rem;
+}
+
 .modal__Close-btn {
   position: absolute;
-  top: 0;
-  right: 0;
-  border: 1px solid red;
+  top: 16px;
+  right: 16px;
+  padding: 0.25rem;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.modal__Close-btn:is(:hover, :focus-visible) {
+  background-color: rgb(230, 230, 230);
+}
+
+.modal::backdrop {
+  background-color: black;
+  opacity: 0.4;
+}
+
+.game__rules {
+  padding-left: 1rem;
+}
+
+.game__rules > li {
+  margin-top: 0.5rem;
 }

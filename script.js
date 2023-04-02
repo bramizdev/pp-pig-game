@@ -12,12 +12,61 @@ const $dice = $('.dice');
 const $$players = $$('.player');
 const $titlePlayer0 = $('.player__title-0');
 const $titlePlayer1 = $('.player__title-1');
+const $modal = $('.modal');
+const $closeModal = $('.modal__Close-btn');
+const $modalContent = $('.modal__content');
 
 let currentPlayer = 0;
 let current = 0;
-const maxScore = 20;
+const maxScore = 100;
 const score = [0, 0];
 let dice;
+
+const rulesHTML = `
+  <h2>Pig game - Rules</h2>
+  <h3>Objective:</h3>
+  <p>The first player to reach 100 points or more wins the game.</p>
+  <h3>Gameplay:</h3>
+  <ol class="game__rules">
+    <li>
+      <p>
+        Each turn, a player rolls a the die with the roll button as many
+        times as they wish and accumulates points equal to the sum of
+        the numbers rolled.
+      </p>
+    </li>
+    <li>
+      <p>
+        If a player rolls a "1," their turn ends and they lose all the
+        points accumulated during that turn.
+      </p>
+    </li>
+    <li>
+      <p>
+        If a player chooses to "hold" before rolling a "1," they keep
+        the points they've earned that turn and add them to their
+        overall score.
+      </p>
+    </li>
+    <li>
+      <p>
+        The game continues with each player taking turns until one
+        player reaches 100 points or more.
+      </p>
+    </li>
+  </ol>
+  `;
+
+const aboutHTML = `<h2>Pig game - About</h2>
+  <p>
+    This is a really small project created to practice HTML, CSS,
+    Javascript and DOM manipulation.
+  </p>
+  <p>
+    The project is part of the Jonas Schmedtmann's The Complete
+    JavaScript Course 2023: From Zero to Expert! course, I added a few
+    additional feautures such as responsive view and accessibility.
+  </p>`;
 
 const rollDice = () => {
   return Math.ceil(Math.random() * 6);
@@ -40,7 +89,7 @@ const init = () => {
   );
   currentPlayer = 0;
   current = 0;
-  score.forEach((s) => 0);
+  score.forEach((_, i) => (score[i] = 0));
   $titlePlayer0.textContent = 'Player 1';
   $titlePlayer1.textContent = 'Player 2';
   $$('.score__final').forEach((score) => (score.textContent = 0));
@@ -48,6 +97,12 @@ const init = () => {
   $('.player__0').classList.add('player__active');
   dice = 0;
   $dice.classList.add('hidden');
+  $holdBtn.removeAttribute('disabled');
+  $rollBtn.removeAttribute('disabled');
+};
+
+const fillModal = (html) => {
+  $modalContent.insertAdjacentHTML('afterbegin', html);
 };
 
 $rollBtn.addEventListener('click', () => {
@@ -81,3 +136,18 @@ $holdBtn.addEventListener('click', () => {
 });
 
 $newBtn.addEventListener('click', init);
+
+$rulesBtn.addEventListener('click', () => {
+  fillModal(rulesHTML);
+  $modal.showModal();
+});
+
+$closeModal.addEventListener('click', () => {
+  $modalContent.innerHTML = '';
+  $modal.close();
+});
+
+$aboutBtn.addEventListener('click', () => {
+  fillModal(aboutHTML);
+  $modal.showModal();
+});

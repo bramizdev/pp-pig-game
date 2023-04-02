@@ -122,6 +122,10 @@ input[type='reset'] {
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
+.hidden {
+  opacity: 0;
+}
+
 /* ----- General styling ----- */
 body {
   font-family: var(--ff-base);
@@ -176,7 +180,7 @@ main {
   .player {
     width: 50%;
     height: 100%;
-    padding: 4rem 1rem;
+    padding: 4rem 1rem 6rem 1rem;
   }
 }
 
@@ -188,6 +192,7 @@ main {
 .btns__container {
   width: 100%;
   position: absolute;
+  z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -274,6 +279,22 @@ main {
   color: var(--clr-primary-500);
 }
 
+/* ----- Player winner ----- */
+.player__winner {
+  background: rgba(47, 55, 90, 0.502);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.player__winner .player__title {
+  font-size: xx-large;
+  color: var(--clr-neutral-100);
+}
+
+.player__winner .score__final {
+  color: var(--clr-neutral-100);
+}
+
 /* ----- Dice ----- */
 .dice {
   height: 65px;
@@ -283,4 +304,12 @@ main {
   .dice {
     height: 80px;
   }
+}
+
+/* ----- Modal ----- */
+.modal__Close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 1px solid red;
 }
